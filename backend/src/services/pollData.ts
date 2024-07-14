@@ -27,6 +27,14 @@ const fetchData = async (codes: string[]) => {
       }
     );
     const coins = res.data;
+    for (const coin of coins) {
+      const { code, rate } = coin;
+      const data = new DataModel({
+        code,
+        price: rate,
+      });
+      await data.save();
+    }
     console.log(coins);
   } catch (error) {
     console.error(error);
