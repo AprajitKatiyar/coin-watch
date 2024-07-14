@@ -3,7 +3,7 @@ import DataModel from "../models/data";
 import dotenv from "dotenv";
 dotenv.config();
 
-const fetchData = async (codes: string[]) => {
+const pollData = async (codes: string[]) => {
   try {
     const apiKey = process.env.LIVECOINWATCH_API_KEY;
     console.log("Using API Key: ", apiKey);
@@ -41,4 +41,4 @@ const fetchData = async (codes: string[]) => {
   }
 };
 
-export { fetchData };
+export { pollData };
