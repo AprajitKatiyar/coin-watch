@@ -4,8 +4,10 @@ import { pollData } from "./services/pollData";
 import { fetchData } from "./services/fetchData";
 import mongoose, { ConnectOptions } from "mongoose";
 import { WebSocketServer, WebSocket } from "ws";
+import cors from "cors";
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 app.use("/api", router);
 app.get("/", (req, res) => {

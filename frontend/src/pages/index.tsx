@@ -1,14 +1,22 @@
 import { useSelector, useDispatch } from "react-redux";
 import { addData } from "@/redux/slices/cryptoDataSlice";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
+import axios from "axios";
 export default function Home() {
   const items = useSelector((state: any) => state);
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
-  const [selectedCrypto, setSelectedCrypto] = useState("");
   const cryptos = ["BTC", "ETH", "GRIN", "SOL", "DOGE"];
+  const [selectedCrypto, setSelectedCrypto] = useState(cryptos[0]);
   const [socket, setSocket] = useState<WebSocket | null>(null);
+  const init = useCallback(async () => {
+    const initData = await axios.get(
+      `http://localhost:3000/api/data/${selectedCrypto}`
+    );
+    dispatch(addData(initData.data));
+  }, [selectedCrypto]);
   useEffect(() => {
+    init();
     const newSocket = new WebSocket("ws://localhost:3000");
     newSocket.onopen = () => {
       console.log("Connection established");
@@ -33,7 +41,7 @@ export default function Home() {
         value={selectedCrypto}
         onChange={handleSelectChange}
       >
-        <option value="">Select a site</option>
+        {/* <option value="">Select a site</option> */}
         {cryptos.map((crypto, index) => (
           <option key={index} value={crypto}>
             {crypto}
