@@ -16,7 +16,7 @@ const pollData = async (codes: string[]) => {
         sort: "rank",
         order: "ascending",
         offset: 0,
-        limit: 3,
+        limit: 10,
         meta: false,
       },
       {

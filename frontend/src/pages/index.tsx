@@ -6,7 +6,7 @@ export default function Home() {
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
   const [selectedCrypto, setSelectedCrypto] = useState("");
-  const cryptos = ["BTC", "ETH", "GRIN"];
+  const cryptos = ["BTC", "ETH", "GRIN", "SOL", "DOGE"];
   const [socket, setSocket] = useState<WebSocket | null>(null);
   useEffect(() => {
     const newSocket = new WebSocket("ws://localhost:3000");

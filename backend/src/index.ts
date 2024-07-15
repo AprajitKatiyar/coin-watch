@@ -35,7 +35,7 @@ mongoose
     console.log("MongoDb connection error:", error);
   });
 
-const codes = ["BTC", "ETH", "GRIN"];
+const codes = ["BTC", "ETH", "GRIN", "SOL", "DOGE"];
 
 setInterval(async () => {
   pollData(codes);
