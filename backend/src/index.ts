@@ -21,7 +21,7 @@ wss.on("connection", function connection(ws) {
     console.log("Received: ", data);
   });
 
-  ws.send("Hello! Message From Server!!");
+  // ws.send("Hello! Message From Server!!");
 });
 mongoose
   .connect(process.env.MONGODB_URI!, {
